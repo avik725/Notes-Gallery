@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes Gallery - Register</title>
+
+    <!-- Css File -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Favicon Link -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/logo_icon.png"
+      sizes="16x16"
+    />
+
+    <!-- Bootstrap Css Link -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <!-- sweetalert2 css link -->
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css" />
+
+    <!-- owlCarousel css links -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+
+    <!-- Google Fonts Links  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main id="register-page">
+      <!-- Header Section Starts -->
+      <section id="header-section" class="px-4 shadow-sm">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+              <img src="assets/images/logo_icon.png" alt="icon" />
+              <h5 class="mb-0 ms-2">Notes Gallery</h5>
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+              class="collapse navbar-collapse justify-content-end"
+              id="navbarNav"
+            >
+              <ul class="navbar-nav pt-2 ps-3 ps-md-4">
+                <li class="nav-item">
+                  <a class="nav-link me-3 text-black" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-3 text-black" href="notes_library.html"
+                    >Notes Library</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="d-lg-block d-none nav-link me-3 text-black theme-btn rounded-pill px-3 py-2 font-work-sans"
+                    href="login.html"
+                    >Login</a
+                  >
+                  <a
+                    class="nav-link d-lg-none me-3 text-black"
+                    href="login.html"
+                    >Login</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="d-lg-block d-none nav-link me-3 text-black theme-btn rounded-pill px-3 py-2 font-work-sans"
+                    href="register.html"
+                    >Register</a
+                  >
+                  <a
+                    class="nav-link d-lg-none me-3 text-black"
+                    href="register.html"
+                    >Register</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </section>
+      <!-- Header Section Ends -->
+
+      <!-- Register Section Starts -->
+      <section id="register-section" class="pb-lg-5 pt-lg-5 pt-2">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5 px-md-4">
+              <div class="card rounded-4 border-0 p-4">
+                <div class="card-body">
+                  <h5
+                    class="card-title text-center mb-4 fw-bold fs-28 fs-sm-24"
+                  >
+                    Create new account
+                  </h5>
+                  <form id="registration-form" onsubmit="submitForm(event)">
+                    <div class="mb-3">
+                      <label for="full_name" class="form-label"
+                        >Full Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Enter your full name"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="username" class="form-label">Username</label>
+                      <div class="d-flex align-items-center gap-2">
+                        <input
+                          type="text"
+                          class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                          id="username"
+                          name="username"
+                          placeholder="Enter your username"
+                          required
+                        />
+                        <button
+                          class="form-control w-25 py-md-3 py-2 h-100 fs-sm-14 rounded-4 theme-bg border-0 fw-semibold"
+                          onclick="checkUsername(event)"
+                        >
+                          Check
+                        </button>
+                      </div>
+                      <p
+                        id="username_validation_message"
+                        class="d-none fs-14 ps-2 py-1"
+                      >
+                        Username not available
+                      </p>
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label"
+                        >Email Address</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input
+                        type="password"
+                        class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="confirm_password" class="form-label"
+                        >Confirm Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="Re-enter password"
+                        required
+                      />
+                      <p
+                        id="password_message"
+                        class="d-none text-danger fs-14 ps-2 py-1"
+                      >
+                        Passwords Mismatched !
+                      </p>
+                    </div>
+                    <div class="mb-3">
+                      <button
+                        class="btn submitBtn disabled border-0 theme-bg w-100 py-2 rounded-pill fw-semibold fs-sm-14"
+                        type="submit"
+                      >
+                        Register
+                      </button>
+                      <p
+                        class="form-control-text-color text-center mt-3 fs-sm-14"
+                      >
+                        Already have an account?
+                        <a
+                          href="login.html"
+                          class="text-decoration-none form-control-text-color"
+                          >Login</a
+                        >
+                      </p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Register Section Ends -->
+
+      <!-- Footer Section Starts -->
+      <section id="footer-section" class="pb-4 pt-md-5 pt-4 mt-lg-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-6">
+              <p class="text-black-50 text-center fs-sm-14">About Us</p>
+            </div>
+            <div class="col-md-4 col-6">
+              <p class="text-black-50 text-center fs-sm-14">Contact Us</p>
+            </div>
+            <div class="col-md-4 col-12">
+              <p class="text-black-50 text-center fs-sm-14">Privacy Policy</p>
+            </div>
+            <div class="col-lg-12">
+              <p class="text-black-50 text-center fs-sm-14">
+                &copy;2025 Notes Gallery. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer Section Ends -->
+    </main>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Username Checking Script -->
+    <script>
+      function checkUsername(e) {
+        e.preventDefault();
+        const username = document.querySelector("#username").value;
+        fetch(`${API_BASE_URL}/users/checkUsernameIfAvailable/${username}`, {
+          method: "GET",
+        })
+          .then(async (res) => {
+            if (res.ok) return await res.json();
+          })
+          .then((data) => {
+            let input = document.querySelector("#username");
+            let btn = document.querySelector(".submitBtn");
+            let message = document.querySelector(
+              "#username_validation_message"
+            );
+
+            input.classList.remove(
+              "bg-light",
+              "bg-danger-subtle",
+              "border-danger",
+              "bg-success-subtle",
+              "border-success"
+            );
+
+            message.classList.remove("d-none", "text-success", "text-danger");
+
+            if (data.success) {
+              input.classList.add("bg-success-subtle", "border-success");
+              btn.classList.remove("disabled");
+              message.classList.add("text-success");
+              message.innerText = "Username available !";
+            } else {
+              input.classList.add("bg-danger-subtle", "border-danger");
+              btn.classList.add("disabled");
+              message.classList.add("text-danger");
+              message.innerText = "Username is not available";
+            }
+          });
+      }
+
+      function submitForm(e) {
+        e.preventDefault();
+        const form = document.querySelector("#registration-form");
+        let password = document.querySelector("#password");
+        let confirmPassword = document.querySelector("#confirm_password");
+        let password_message = document.querySelector("#password_message");
+
+        password.classList.remove(
+          "bg-light",
+          "bg-danger-subtle",
+          "border-danger"
+        );
+        confirmPassword.classList.remove(
+          "bg-light",
+          "bg-danger-subtle",
+          "border-danger"
+        );
+        if (!(password.value === confirmPassword.value)) {
+          password_message.classList.remove("d-none");
+          password.classList.add("bg-danger-subtle", "border-danger");
+          confirmPassword.classList.add("bg-danger-subtle", "border-danger");
+          return;
+        } else {
+          if (!password_message.classList.contains("d-none")) {
+            password_message.classList.add("d-none");
+          }
+        }
+
+        const formdata = new FormData(form);
+        const jsonData = {};
+        formdata.forEach((value, key) => {
+          jsonData[key] = value;
+        });
+
+        fetch(`${API_BASE_URL}/users/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(jsonData),
+        })
+          .then(async (res) => {
+            return await res.json();
+          })
+          .then((data) => {
+            fireSweetAlert({
+              success: data.success,
+              message: data.message,
+              timer: 2000,
+            }).then(() => {
+              if (data.success) {
+                // Encode both key and value using btoa
+                // const key = btoa("registeredSuccessfully");
+                // const value = btoa("true");
+                window.location.href = `/login.html?registeredSuccessfully=true`;
+              }
+            });
+          })
+          .catch((err) => {
+            fireSweetAlert({
+              success: false,
+              message:
+                err.message === "Failed to fetch"
+                  ? "Connection Error"
+                  : err.message,
+              timer: 2000,
+            });
+          });
+      }
+    </script>
+  </body>
+</html>
