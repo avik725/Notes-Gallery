@@ -2155,7 +2155,7 @@
           var n = r({}, this.options, t);
           return "function" == typeof n.data
             ? n.data(n)
-            : fetch(n.url, n)
+            : fetch(n.url, {...n,credentials: "include"})
                 .then(this.handler.bind(this))
                 .then(function (t) {
                   return {

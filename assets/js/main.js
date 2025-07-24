@@ -134,4 +134,51 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   };
+
+  window.buildModal = function (title, url, featured = false) {
+    let modalTitle = document.querySelector(".modal-title");
+    let modalBody = document.querySelector(".modal-body");
+    let modalContent = document.querySelector(".modal-content");
+    let modalFooter = modalContent.querySelector(".modal-footer");
+
+    modalTitle.innerHTML = "";
+    modalBody.innerHTML = "";
+
+    modalTitle.innerHTML = `<span class="text-capitalize">${title}</span>`;
+
+    modalBody.innerHTML = `<iframe
+                      id="pdfPreview"
+                      class="pdf-preview h-100 w-100"
+                      type="application/pdf"
+                      src="${url}#toolbar=0&navpanes=0&scrollbar=1"
+                    ></iframe>`;
+
+    if (modalFooter) {
+      modalFooter.remove();
+    }
+
+    if (featured) {
+      let footerHTML = document.createElement("div");
+      footerHTML.className = "modal-footer";
+      footerHTML.innerHTML = `
+          <button type="button" class="btn theme-btn fw-bold rounded-pill py-2 px-3" onclick="downloadNote('${title}','${url}')">
+            Download
+          </button>
+        `;
+      modalContent.appendChild(footerHTML);
+    }
+  };
+
+  window.downloadNote = function (title, fileUrl) {
+    const downloadUrl = fileUrl.includes("upload/")
+      ? fileUrl.replace("upload/", "upload/fl_attachment/")
+      : fileUrl;
+
+    const a = document.createElement("a");
+    a.href = downloadUrl;
+    a.download = title;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
 });
