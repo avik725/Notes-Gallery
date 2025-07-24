@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="assets/css/mermaid.min.css" />
 
     <!-- Bootstrap select css  -->
-    <link rel="stylesheet" href="assets/css/bootstrap-select.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.css" />
   </head>
   <body>
     <main id="notes-library-page">
@@ -87,7 +87,7 @@
                     >Login</a
                   >
                   <a
-                    class="nav-link d-md-none me-3 text-black"
+                    class="nav-link d-lg-none me-3 text-black"
                     href="login.html"
                     >Login</a
                   >
@@ -99,7 +99,7 @@
                     >Register</a
                   >
                   <a
-                    class="nav-link d-md-none me-3 text-black"
+                    class="nav-link d-lg-none me-3 text-black"
                     href="register.html"
                     >Register</a
                   >
@@ -127,11 +127,7 @@
                         id="stream"
                         class="form-control selectpicker rounded-4 fs-sm-14"
                         data-live-search="true"
-                      >
-                        <option value="">Select Stream</option>
-                        <option value="">Medical</option>
-                        <option value="">Engineering</option>
-                      </select>
+                      ></select>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-6">
@@ -142,11 +138,7 @@
                         id="course"
                         class="form-control selectpicker rounded-4 fs-sm-14"
                         data-live-search="true"
-                      >
-                        <option value="">Select Course</option>
-                        <option value="">MBBS</option>
-                        <option value="">B.TECH.</option>
-                      </select>
+                      ></select>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-6">
@@ -157,11 +149,7 @@
                         id="semester"
                         class="form-control selectpicker rounded-4 fs-sm-14"
                         data-live-search="true"
-                      >
-                        <option value="">Select Stream</option>
-                        <option value="">1st</option>
-                        <option value="">2nd</option>
-                      </select>
+                      ></select>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-6">
@@ -173,18 +161,18 @@
                         class="form-control selectpicker rounded-4 fs-sm-14"
                         data-live-search="true"
                       >
-                        <option value="">Newest To Oldest</option>
-                        <option value="">Oldest to Newest</option>
-                        <option value="">Alphabetically (Title)</option>
+                        <option value="1">Newest To Oldest</option>
+                        <option value="2">Oldest to Newest</option>
+                        <option value="3">Alphabetically (Title)</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-6">
-                      <button
-                        class="btn theme-btn rounded-pill fw-bold fs-14 py-2 px-3"
-                      >
-                        Apply Filters
-                      </button>
+                    <button
+                      class="btn apply-filters theme-btn rounded-pill fw-bold fs-14 py-2 px-3"
+                    >
+                      Apply Filters
+                    </button>
                   </div>
                 </div>
               </form>
@@ -214,66 +202,7 @@
               </form>
               <div class="featured-notes">
                 <h5 class="fw-bold fs-18 my-4 ps-2">Featured Notes</h5>
-                <div class="owl-carousel">
-                  <div class="card border-0 px-2">
-                    <div class="card-img">
-                      <img
-                        src="assets/images/notes_library/card1.png"
-                        alt="icon"
-                      />
-                    </div>
-                    <div class="card-text pt-3">
-                      <p class="fs-16 fw-medium mb-1">Calculus I Notes</p>
-                      <p class="form-control-text-color">
-                        Professor Thompson, Fall 2023
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card border-0 px-2">
-                    <div class="card-img">
-                      <img
-                        src="assets/images/notes_library/card2.png"
-                        alt="icon"
-                      />
-                    </div>
-                    <div class="card-text pt-3">
-                      <p class="fs-16 fw-medium mb-1">
-                        Introduction to Psychology
-                      </p>
-                      <p class="form-control-text-color">
-                        Professor Davis, Spring 2024
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card border-0 px-2">
-                    <div class="card-img">
-                      <img
-                        src="assets/images/notes_library/card3.png"
-                        alt="icon"
-                      />
-                    </div>
-                    <div class="card-text pt-3">
-                      <p class="fs-16 fw-medium mb-1">Organic Chemistry II</p>
-                      <p class="form-control-text-color">
-                        Professor Clark, Fall 2023
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card border-0 px-2">
-                    <div class="card-img">
-                      <img
-                        src="assets/images/notes_library/card4.png"
-                        alt="icon"
-                      />
-                    </div>
-                    <div class="card-text pt-3">
-                      <p class="fs-16 fw-medium mb-1">World History</p>
-                      <p class="form-control-text-color">
-                        Professor Wilson, Spring 2024
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <div class="owl-carousel"></div>
               </div>
               <div class="all-notes">
                 <h5 class="fw-bold fs-18 my-4 ps-2">All Notes</h5>
@@ -317,7 +246,7 @@
         aria-hidden="true"
       >
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content">
+          <div class="modal-content w-100">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
                 Modal title
@@ -329,19 +258,7 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
+            <div class="modal-body"></div>
           </div>
         </div>
       </div>
@@ -357,106 +274,138 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- Owl Carousel Script Starts -->
+    <!-- Get Features Notes and Owl Carousel Script -->
     <script>
-      $(document).ready(function () {
-        $(".owl-carousel").owlCarousel({
-          loop: true,
-          margin: 10,
-          nav: false,
-          autoplay: true,
-          dots: false,
-          autoplayTimeout: 4000,
-          autoplaySpeed: 1200,
-          autoplayHoverPause: true,
-          responsive: {
-            0: { items: 1 },
-            600: { items: 2 },
-            1000: { items: 4 },
+      document.addEventListener("DOMContentLoaded", () => {
+        let carousel = document.querySelector(".owl-carousel");
+        fetch(`${API_BASE_URL}/notes/get-featured-notes`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
           },
-        });
+        })
+          .then(async (res) => {
+            return res.json();
+          })
+          .then((data) => {
+            if (data.success) {
+              carousel.innerHTML = "";
+              data.data.map((note) => {
+                carousel.innerHTML += `
+                <div class="card border-0 px-2 cursor-pointer" onclick="buildModal('${
+                  note.title
+                }','${
+                  note.file_url
+                }','${true}')" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div class="card-img rounded-3 border border-1 overflow-hidden">
+                  <img
+                  src="${note.thumbnail}"
+                  alt="icon"
+                  class="w-100 h-100"
+                  />
+                </div>
+                <div class="card-text pt-3">
+                  <p class="fs-16 fw-medium mb-1 text-capitalize">${
+                    note.title
+                  }</p>
+                  <p class="form-control-text-color">
+                  <span class="text-capitalize">${note.course.name.toLowerCase()}</span>, ${
+                  note.semester ? note.semester : note.year
+                }${
+                  (note.semester || note.year) === 1
+                    ? "st"
+                    : (note.semester || note.year) === 2
+                    ? "nd"
+                    : (note.semester || note.year) === 3
+                    ? "rd"
+                    : "th"
+                } ${note.semester ? "semester" : "year"}
+                  </p>
+                </div>
+                </div>
+              `;
+              });
+
+              $(document).ready(function () {
+                $(carousel).owlCarousel({
+                  loop: true,
+                  margin: 10,
+                  nav: false,
+                  autoplay: true,
+                  dots: false,
+                  autoplayTimeout: 4000,
+                  autoplaySpeed: 1200,
+                  autoplayHoverPause: true,
+                  responsive: {
+                    0: { items: 1 },
+                    600: { items: 3 },
+                    1000: { items: 4 },
+                  },
+                });
+              });
+            } else {
+              fireSweetAlert({
+                success: data.success,
+                message: data.message || "Something Went Wrong",
+              });
+            }
+          });
+
+        function buildFeaturedModal(title, file_url) {}
       });
     </script>
-    <!-- Owl Carousel Script Ends -->
 
     <!-- Data Table Script Starts -->
     <script>
-      const tableData = [
-        [
-          "Calculus I - Chapter 3",
-          "Math 101",
-          "Fall 2023",
-          gridjs.html(
-            `<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            class="text-decoration-none form-control-text-color fw-semibold pe-2 m-0">
-            View
-            </a> | 
-            <a href="#" class="text-decoration-none form-control-text-color fw-semibold ps-2 m-0" >
-              Download
-            </a>`
-          ),
-        ],
-        [
-          "Psychology Basics",
-          "Psych 100",
-          "Spring 2025",
-          gridjs.html(
-            `<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            class="text-decoration-none form-control-text-color fw-semibold pe-2 m-0">
-            View</a> | 
-            <a href="#" class="text-decoration-none form-control-text-color fw-semibold ps-2 m-0">
-              Download
-            </a>`
-          ),
-        ],
-        [
-          "Organic Chemistry II - Reactions",
-          "Chem 202",
-          "Fall 2023",
-          gridjs.html(
-            `<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            class="text-decoration-none form-control-text-color fw-semibold pe-2 m-0">
-            View</a> | 
-            <a href="#" class="text-decoration-none form-control-text-color fw-semibold ps-2 m-0">
-              Download
-            </a>`
-          ),
-        ],
-        [
-          "World History - Renaissance",
-          "Hist 102",
-          "Spring 2025",
-          gridjs.html(
-            `<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            class="text-decoration-none form-control-text-color fw-semibold pe-2 m-0">
-              View
-            </a> | 
-            <a href="#" class="text-decoration-none form-control-text-color fw-semibold ps-2 m-0">
-              Download
-            </a>`
-          ),
-        ],
-        [
-          "Linear Algebra Notes",
-          "Math 201",
-          "Spring 2025",
-          gridjs.html(
-            `<a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            class="text-decoration-none form-control-text-color fw-semibold pe-2 m-0">
-              View
-            </a> | 
-            <a href="#" class="text-decoration-none form-control-text-color fw-semibold ps-2 m-0">
-              Download
-            </a>`
-          ),
-        ],
-      ];
+      let stream = document.querySelector("#stream");
+      let course = document.querySelector("#course");
+      let semester = document.querySelector("#semester");
+      let sort = document.querySelector("#sort");
 
-      new gridjs.Grid({
-        columns: ["Title", "Subject", "Semester", "Action"],
-        data: tableData,
-        search: true,
-        pagination: { enabled: true, limit: 5 },
+      const grid = new gridjs.Grid({
+        columns: ["Title", "Course", "Semester / Year", "Action"],
+        server: {
+          url: `${API_BASE_URL}/notes/get-notes`,
+          then: (data) =>
+            data.data.docs.map((note) => [
+              gridjs.html(`<span class="text-capitalize">${note.title}</span>`),
+              note.course.name,
+              `${note.semester ? note.semester : note.year}${
+                (note.semester || note.year) === 1
+                  ? "st"
+                  : (note.semester || note.year) === 2
+                  ? "nd"
+                  : (note.semester || note.year) === 3
+                  ? "rd"
+                  : "th"
+              } ${note.semester ? "semester" : "year"}`,
+              gridjs.html(
+                `<a href="#" onclick="buildModal('${note.title}','${note.file_url}')" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                class="view-btn text-decoration-none form-control-text-color fw-semibold pe-2 m-0">
+                View
+                </a> |
+                <a href="#" onclick="downloadNote('${note.title}','${note.file_url}')" class="text-decoration-none form-control-text-color fw-semibold ps-2 m-0" >
+                  Download
+                </a>`
+              ),
+            ]),
+          total: (data) => data.data.totalDocs,
+        },
+        pagination: {
+          enabled: true,
+          limit: 5,
+          server: {
+            url: (prev, page, limit) => {
+              const separator = prev.includes("?") ? "&" : "?";
+              return `${prev}${separator}limit=${limit}&page=${page}`;
+            },
+          },
+        },
+        search: {
+          server: {
+            url: (prev, keyword) => `${prev}?search=${keyword}`,
+          },
+        },
         sort: true,
       }).render(document.getElementById("table-wrapper"));
 
@@ -476,7 +425,208 @@
           const event = new Event("input", { bubbles: true });
           searchBox.dispatchEvent(event);
         });
+
+      // Apply Filter Script
+      let applyFilterBtn = document.querySelector(".apply-filters");
+      applyFilterBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelector(".featured-notes").classList.add("d-none");
+        grid
+          .updateConfig({
+            pagination: {
+              enabled: true,
+              limit: 5,
+              server: {
+                url: (prev, page, limit) => {
+                  const separator = prev.includes("?") ? "&" : "?";
+                  return `${prev}${separator}limit=${limit}&page=${page}${
+                    stream.value ? `&stream=${stream.value}` : ""
+                  }${course.value ? `&course=${course.value}` : ""}${
+                    semester.value ? `&semester=${semester.value}` : ""
+                  }${sort.value ? `&sort=${sort.value}` : ""}`;
+                },
+              },
+            },
+          })
+          .forceRender();
+      });
     </script>
     <!-- Data Table Script Ends -->
+
+    <!-- select filters script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        let stream_select = document.querySelector("#stream");
+        let course_select = document.querySelector("#course");
+        let semester_select = document.querySelector("#semester");
+
+        async function populateStreams() {
+          try {
+            const res = await fetch(`${API_BASE_URL}/notes/get-streams`, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            const data = await res.json();
+            if (data.success) {
+              let streams = data.data;
+              $(stream_select).empty();
+              $(stream_select).val();
+              $(stream_select).append(
+                '<option value="">Select Stream</option>'
+              );
+              streams?.forEach((stream) => {
+                let option = document.createElement("option");
+                option.value = stream._id;
+                option.text = stream.name;
+                stream_select.appendChild(option);
+              });
+              $(stream_select).selectpicker("refresh");
+            } else {
+              console.log("Streams Fetching Failed");
+            }
+          } catch (error) {
+            console.log("Error while fetching streams : ", error);
+          }
+        }
+        populateStreams();
+
+        async function populateCoursesAndSemesters(stream = "") {
+          try {
+            const res = await fetch(
+              `${API_BASE_URL}/notes/get-courses${
+                stream ? `?stream=${stream}` : ""
+              }`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+            const data = await res.json();
+            if (data.success) {
+              $(course_select).selectpicker("destroy");
+              $(course_select).empty();
+              $(course_select).val();
+              $(course_select).append(
+                '<option value="">Select Course</option>'
+              );
+              data.data.forEach((course) => {
+                let option = document.createElement("option");
+                option.value = course._id;
+                option.text = course.name;
+                course_select.appendChild(option);
+              });
+              $(course_select).selectpicker("render");
+
+              course_select.addEventListener("change", (e) => {
+                $(semester_select).selectpicker("destroy");
+                $(semester_select).empty();
+                $(semester_select).val("");
+                $(semester_select).append(
+                  `<option value="">Select Semester</option>`
+                );
+                let selectedCourseValue = e.target.value;
+                let noOfSemesters;
+                let isSemester = true;
+                data.data.forEach((course) => {
+                  if (course._id === selectedCourseValue) {
+                    noOfSemesters = course.semesters
+                      ? course.semesters
+                      : course.years;
+
+                    isSemester = course.semesters ? true : false;
+                  }
+                });
+
+                for (let i = 1; i <= noOfSemesters; i++) {
+                  let option = document.createElement("option");
+                  option.value = i;
+                  option.text = `${i}${
+                    i === 1 ? "st" : i === 2 ? "nd" : i === 3 ? "rd" : "th"
+                  } ${isSemester ? "semester" : "year"}`;
+                  semester_select.appendChild(option);
+                }
+                $(semester_select).selectpicker("render");
+              });
+            } else {
+              console.log("Courses Fetching Failed");
+            }
+          } catch (error) {
+            console.log("Error while fetching courses : ", error);
+          }
+        }
+        // Initial population
+        populateCoursesAndSemesters();
+
+        // Populate courses when stream changes
+        stream_select.addEventListener("change", function () {
+          populateCoursesAndSemesters(this.value);
+        });
+      });
+    </script>
+
+    <!-- Download Script -->
+    <script>
+      window.downloadNote = function (title, fileUrl) {
+        const downloadUrl = fileUrl.includes("upload/")
+          ? fileUrl.replace("upload/", "upload/fl_attachment/")
+          : fileUrl;
+
+        const a = document.createElement("a");
+        a.href = downloadUrl;
+        a.download = title;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      };
+    </script>
+
+    <!-- Modal PDF View Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        window.buildModal = function (title, url, featured = false) {
+          let modalTitle = document.querySelector(".modal-title");
+          let modalBody = document.querySelector(".modal-body");
+          let modalContent = document.querySelector(".modal-content");
+          let modalFooter = modalContent.querySelector(".modal-footer");
+
+          // Clear previous content
+          modalTitle.innerHTML = "";
+          modalBody.innerHTML = "";
+
+          // Set new title
+          modalTitle.innerHTML = `<span class="text-capitalize">${title}</span>`;
+
+          // Set new body with PDF preview
+          modalBody.innerHTML = `<iframe
+                      id="pdfPreview"
+                      class="pdf-preview h-100 w-100"
+                      type="application/pdf"
+                      src="${url}#toolbar=0&navpanes=0&scrollbar=1"
+                      style="min-height: 500px; border: none;"
+                    ></iframe>`;
+
+          // Remove existing footer if any
+          if (modalFooter) {
+            modalFooter.remove();
+          }
+
+          // If featured, add footer with Download button
+          if (featured) {
+            let footerHTML = document.createElement("div");
+            footerHTML.className = "modal-footer";
+            footerHTML.innerHTML = `
+          <button type="button" class="btn theme-btn fw-bold rounded-pill py-2 px-3" onclick="downloadNote('${title}','${url}')">
+            Download
+          </button>
+        `;
+            modalContent.appendChild(footerHTML);
+          }
+        };
+      });
+    </script>
   </body>
 </html>

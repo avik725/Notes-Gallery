@@ -138,11 +138,7 @@
                     id="stream"
                     class="form-control selectpicker bg-light rounded-4 fs-sm-14"
                     data-live-search="true"
-                  >
-                    <option value="">Select Stream</option>
-                    <option value="medical">Medical</option>
-                    <option value="engineering">Engineering</option>
-                  </select>
+                  ></select>
                 </div>
                 <div class="mb-3">
                   <label for="course" class="form-label">Course</label>
@@ -151,24 +147,18 @@
                     id="course"
                     class="form-control selectpicker bg-light rounded-4 fs-sm-14"
                     data-live-search="true"
-                  >
-                    <option value="">Select Course</option>
-                    <option value="mbbs">MBBS</option>
-                    <option value="b.tech">B.Tech</option>
-                  </select>
+                  ></select>
                 </div>
                 <div class="mb-3">
-                  <label for="semester" class="form-label">Semester</label>
+                  <label for="semester" class="form-label"
+                    >Semester / Year</label
+                  >
                   <select
                     name="semester"
                     id="semester"
                     class="form-control selectpicker bg-light rounded-4 fs-sm-14"
                     data-live-search="true"
-                  >
-                    <option value="">Select Semester</option>
-                    <option value="1st">1st</option>
-                    <option value="2nd">2nd</option>
-                  </select>
+                  ></select>
                 </div>
                 <div class="mb-4 pb-2">
                   <label for="description" class="form-label"
@@ -239,7 +229,7 @@
                 <div class="px-5">
                   <button
                     type="submit"
-                    class="btn theme-btn w-100 rounded-pill fw-bold py-2"
+                    class="btn uploadBtn border-0 theme-btn w-100 rounded-pill fw-bold py-2"
                   >
                     Upload
                   </button>
@@ -399,8 +389,16 @@
     <!-- File Uploading Script -->
     <script>
       const form = document.querySelector("form");
+      const uploadBtn = document.querySelector(".uploadBtn");
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
+        uploadBtn.innerHTML = `<span
+        class="spinner-border spinner-border-sm me-2"
+        role="status"
+        aria-hidden="true"
+        ></span>`;
+        uploadBtn.disabled = true;
         const formData = new FormData(form);
         fetch(`${API_BASE_URL}/notes/upload-notes`, {
           method: "POST",
@@ -411,13 +409,113 @@
             return await res.json();
           })
           .then((data) => {
+            uploadBtn.innerHTML = "Upload";
+            uploadBtn.disabled = false;
             fireSweetAlert({
               success: data.success,
               message: data.message,
-            }).then(()=>{
+            }).then(() => {
               if (data.success) location.reload();
             });
-            
+          });
+      });
+    </script>
+
+    <!-- Filters Script  -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let stream_select = document.querySelector("#stream");
+        let course_select = document.querySelector("#course");
+        let semester_select = document.querySelector("#semester");
+
+        let filters_data;
+        fetch(`${API_BASE_URL}/notes/get_filters`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then(async (res) => {
+            return await res.json();
+          })
+          .then((data) => {
+            if (data.success) {
+              filters_data = data.data;
+
+              let selectedStream;
+
+              // Stream Select
+              stream_select.innerHTML = "";
+              $(stream_select).append(`<option val="">Select Stream</option>`);
+              filters_data.forEach((stream) => {
+                let option = document.createElement("option");
+                option.value = stream._id;
+                option.innerText = stream.name;
+                stream_select.appendChild(option);
+              });
+              $(".selectpicker").selectpicker("refresh");
+
+              // Course Select
+              stream_select.addEventListener("change", (e) => {
+                $(course_select).selectpicker("destroy");
+                $(course_select).empty();
+                $(course_select).val("");
+                $(course_select).selectpicker("render");
+                let selectedStreamValue = e.target.value;
+
+                let index = filters_data?.findIndex((stream) => {
+                  return stream._id === selectedStreamValue;
+                });
+                selectedStream = filters_data[index];
+
+                $(course_select).append(
+                  `<option val="">Select Course</option>`
+                );
+                selectedStream.courses.forEach((course) => {
+                  let option = document.createElement("option");
+                  option.value = course._id;
+                  option.text = course.name;
+                  course_select.appendChild(option);
+                });
+
+                $(course_select).selectpicker("refresh");
+              });
+
+              // Semester select
+              course_select.addEventListener("change", (e) => {
+                $(semester_select).selectpicker("destroy");
+                $(semester_select).empty();
+                $(semester_select).val("");
+                $(semester_select).selectpicker("render");
+                $(semester_select).append(
+                  `<option val="">Select Semester</option>`
+                );
+                let selectedCourseValue = e.target.value;
+                let noOfSemesters;
+                let isSemester = true;
+                selectedStream.courses.forEach((course) => {
+                  if (course._id === selectedCourseValue) {
+                    noOfSemesters = course.semesters
+                      ? course.semesters
+                      : course.years;
+
+                    isSemester = course.semesters ? true : false;
+                  }
+                });
+
+                for (let i = 1; i <= noOfSemesters; i++) {
+                  let option = document.createElement("option");
+                  option.value = i;
+                  option.text = `${i}${
+                    i === 1 ? "st" : i === 2 ? "nd" : i === 3 ? "rd" : "th"
+                  } ${isSemester ? "semester" : "year"}`;
+                  semester_select.appendChild(option);
+                }
+                $(semester_select).selectpicker("refresh");
+              });
+            } else {
+              console.log("Filters Cannot be Fetched");
+            }
           });
       });
     </script>

@@ -56,8 +56,8 @@
   cursor: pointer;
 }
 
-.border-dashed{
-  border: 2px dashed #D1D6E3;
+.border-dashed {
+  border: 2px dashed #d1d6e3;
 }
 
 .font-work-sans {
@@ -106,7 +106,7 @@
   .bootstrap-select {
     .dropdown-toggle {
       background-color: #f8f9fa;
-      &:hover{
+      &:hover {
         background-color: #f8f9fa !important;
         border-color: #d9dde8;
       }
@@ -143,6 +143,19 @@ $font-sizes: (14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 48);
       font-size: #{$size}px !important;
     }
   }
+}
+
+// Boostrap Modal Css
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 700px !important;
+  }
+}
+
+
+.modal-dialog-scrollable .modal-content {
+    height: 75%;
 }
 
 // Header Section Starts

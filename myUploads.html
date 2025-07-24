@@ -287,30 +287,54 @@
         ],
       ];
 
-      new gridjs.Grid({
-        columns: ["Title", "Subject", "Semester", "Action"],
-        data: tableData,
-        search: true,
-        pagination: { enabled: true, limit: 5 },
+      const grid = new gridjs.Grid({
+        columns: ["Title", "Course", "Semester / Year", "Action"],
+        server: {
+          url: `${API_BASE_URL}/notes/get-notes`,
+          then: (data) =>
+            data.data.docs.map((note) => [
+              gridjs.html(`<span class="text-capitalize">${note.title}</span>`),
+              note.course.name,
+              `${note.semester ? note.semester : note.year}${
+                (note.semester || note.year) === 1
+                  ? "st"
+                  : (note.semester || note.year) === 2
+                  ? "nd"
+                  : (note.semester || note.year) === 3
+                  ? "rd"
+                  : "th"
+              } ${note.semester ? "semester" : "year"}`,
+              gridjs.html(
+                `<a href="#" onclick="buildModal('${note.title}','${note.file_url}')" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                class="view-btn text-decoration-none form-control-text-color fw-semibold pe-2 m-0">
+                View
+                </a> |
+                <a href="#" onclick="downloadNote('${note.title}','${note.file_url}')" class="text-decoration-none form-control-text-color fw-semibold ps-2 m-0" >
+                  Download
+                </a>`
+              ),
+            ]),
+          total: (data) => data.data.totalDocs,
+        },
+        pagination: {
+          enabled: true,
+          limit: 5,
+          server: {
+            url: (prev, page, limit) => {
+              const separator = prev.includes("?") ? "&" : "?";
+              return `${prev}${separator}limit=${limit}&page=${page}`;
+            },
+          },
+        },
+        search: {
+          server: {
+            url: (prev, keyword) => `${prev}?search=${keyword}`,
+          },
+        },
         sort: true,
       }).render(document.getElementById("table-wrapper"));
 
-      document
-        .getElementById("search_notes_input")
-        .addEventListener("input", function (e) {
-          if (e.target.value.trim() === "") {
-            document
-              .querySelector(".featured-notes")
-              .classList.remove("d-none");
-          } else {
-            document.querySelector(".featured-notes").classList.add("d-none");
-          }
-          const searchBox = document.querySelector(".gridjs-input");
-          searchBox.value = e.target.value;
-
-          const event = new Event("input", { bubbles: true });
-          searchBox.dispatchEvent(event);
-        });
+      
     </script>
     <!-- Data Table Script Ends -->
   </body>
