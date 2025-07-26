@@ -78,6 +78,14 @@
   color: #57618f !important;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
+.light-black {
+  color: #121417;
+}
+
 .bootstrap-select .dropdown-toggle {
   padding: 16px 8px;
   background-color: #fff;

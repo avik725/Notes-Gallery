@@ -19,12 +19,24 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href = "/index.html";
         }
         constructLoggedInHeader(data);
+
+        if (window.location.pathname.includes("about")) {
+          document.querySelector(
+            ".get-involved"
+          ).innerHTML += `<a href="upload_notes.html" class="btn border-0 theme-btn rounded-pill fw-bold px-3 py-2">Upload Notes Now !</a>`;
+        }
       } else {
         if (
           window.location.pathname.includes("myUploads") ||
           window.location.pathname.includes("upload_notes")
         ) {
           window.location.href = "/index.html";
+        }
+
+        if (window.location.pathname.includes("about")) {
+          document.querySelector(
+            ".get-involved"
+          ).innerHTML += `<a href="register.html" class="btn border-0 theme-btn rounded-pill fw-bold px-3 py-2">Register Now !</a>`;
         }
       }
     });
@@ -80,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                        <img src="assets/images/demo_header_profile_pic.png" alt="icon">
                     </span>
                     <ul class="dropdown-menu dropdown-menu-end mt-2 border-0 shadow-lg">
-                        <li><a class="dropdown-item" href="#">My Profile</a></li>
+                        <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
                         <li><a class="dropdown-item" href="#" id="logoutBtn">Log Out</a></li>
                     </ul>
                 </li>
@@ -99,19 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
           return await res.json();
         })
         .then((data) => {
-          if (data.success) {
-            fireSweetAlert({
-              success: data.success,
-              message: data.message,
-            }).then(() => {
+          fireSweetAlert({
+            success: data.success,
+            message: data.message,
+          }).then(() => {
+            if (data.success) {
               location.reload();
-            });
-          } else {
-            fireSweetAlert({
-              success: data.success,
-              message: data.message,
-            });
-          }
+            }
+          });
         });
     });
   };
