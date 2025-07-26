@@ -297,7 +297,7 @@
                 }','${
                   note.file_url
                 }','${true}')" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div class="card-img rounded-3 border border-1 overflow-hidden">
+                <div class="card-img rounded-3 border border-1 overflow-hidden position-relative">
                   <img
                   src="${note.thumbnail}"
                   alt="icon"
@@ -307,7 +307,11 @@
                 <div class="card-text pt-3">
                   <p class="fs-16 fw-medium mb-1 text-capitalize">${
                     note.title
-                  }</p>
+                  }${
+                  note.is_verified
+                    ? `<button type="button" data-bs-custom-class="custom-tooltip" class="btn p-0 border-0 bg-transparent ms-2 pe-2 text-success" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Verified"><i class="fa-solid fa-circle-check"></i></button>`
+                    : ""
+                }</p>
                   <p class="form-control-text-color">
                   <span class="text-capitalize">${note.course.name.toLowerCase()}</span>, ${
                   note.semester ? note.semester : note.year
@@ -368,7 +372,13 @@
           url: `${API_BASE_URL}/notes/get-notes`,
           then: (data) =>
             data.data.docs.map((note) => [
-              gridjs.html(`<span class="text-capitalize">${note.title}</span>`),
+              gridjs.html(
+                `<span class="text-capitalize">${note.title}${
+                  note.is_verified
+                    ? `<button type="button" data-bs-custom-class="custom-tooltip" class="btn p-0 border-0 bg-transparent ms-2 pe-2 text-success" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Verified"><i class="fa-solid fa-circle-check"></i></button>`
+                    : ""
+                }`
+              ),
               note.course.name,
               `${note.semester ? note.semester : note.year}${
                 (note.semester || note.year) === 1
@@ -408,6 +418,10 @@
         },
         sort: true,
       }).render(document.getElementById("table-wrapper"));
+
+      setTimeout(() => {
+        reinitializeTooltips();
+      }, 1000);
 
       document
         .getElementById("search_notes_input")
@@ -567,6 +581,5 @@
         });
       });
     </script>
-
   </body>
 </html>

@@ -158,6 +158,31 @@ $font-sizes: (14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 48);
     height: 75%;
 }
 
+// Verified bagde
+
+.verified-badge{
+  position: absolute;
+  top: -5%;
+  right: -15%;
+  color: #fff;
+  background-color: rgb(30, 187, 30);
+  rotate: 45deg;
+  padding: 8px 30px 0;
+  font-size: 14px;
+  i{
+    rotate: -45deg;
+  }
+}
+
+//Theme tooltip
+.custom-tooltip {
+  --bs-tooltip-bg: #f4f4f4 !important;
+  --bs-tooltip-color: #111 !important;
+  border-radius: 5px;
+ box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.44);
+ font-size: 12px !important;
+}
+
 // Header Section Starts
 
 #header-section {

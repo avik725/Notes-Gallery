@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- Favicon Link -->
-    <link rel="icon" type="image/png" href="assets/images/logo_icon.png" sizes="16x16"/>
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/images/logo_icon.png"
+      sizes="16x16"
+    />
 
     <!-- Bootstrap Css Link -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -24,6 +29,15 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
+    />
+
+    <!-- fontawesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
   </head>
   <body>
@@ -110,7 +124,7 @@
               href="notes_library.html"
             >
               Explore Notes
-          </a>
+            </a>
           </div>
         </div>
       </section>
@@ -118,7 +132,7 @@
 
       <!-- Notes Section Starts -->
       <section id="notes-section" class="pb-lg-5 pb-md-3 pb-2">
-        <div class="container">
+        <div class="container notes-container">
           <div class="row">
             <div class="col-12">
               <h3 class="fw-bold my-4 ps-2">Medical Engineering</h3>
@@ -250,106 +264,6 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <h3 class="fw-bold my-4 pt-3 ps-2">Commerce</h3>
-              <div class="owl-carousel owl-theme">
-                <div class="px-lg-3 px-md-2 px-3">
-                  <div
-                    class="card rounded-4 overflow-hidden border-0 shadow-sm"
-                  >
-                    <div class="card-img w-100 rounded-3">
-                      <img
-                        src="assets/images/card-image-1.png"
-                        alt="card-image"
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="card-text px-4 py-3">
-                      <h5>Financial Accounting Basics</h5>
-                      <p class="text-black-50 fs-14">
-                        <span
-                          class="border-end border-1 pe-2 me-2 text-black-50"
-                          >Accounting</span
-                        >Semester 1
-                      </p>
-                    </div>
-                    <div class="card-button mt-4 text-center px-4 py-2">
-                      <button
-                        class="theme-btn fs-14 rounded-pill w-100 fw-bold py-2 border-0"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                      >
-                        View
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="px-lg-3 px-md-2 px-3">
-                  <div
-                    class="card rounded-4 overflow-hidden border-0 shadow-sm"
-                  >
-                    <div class="card-img w-100 rounded-3">
-                      <img
-                        src="assets/images/card-image-2.png"
-                        alt="card-image"
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="card-text px-4 py-3">
-                      <h5>Principles of Economics</h5>
-                      <p class="text-black-50 fs-14">
-                        <span
-                          class="border-end border-1 pe-2 me-2 text-black-50"
-                          >Economics</span
-                        >Semester 2
-                      </p>
-                    </div>
-                    <div class="card-button mt-4 text-center px-4 py-2">
-                      <button
-                        class="theme-btn fs-14 rounded-pill w-100 fw-bold py-2 border-0"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                      >
-                        View
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div class="px-lg-3 px-md-2 px-3">
-                  <div
-                    class="card rounded-4 overflow-hidden border-0 shadow-sm"
-                  >
-                    <div class="card-img w-100 rounded-3">
-                      <img
-                        src="assets/images/card-image-3.png"
-                        alt="card-image"
-                        class="img-fluid"
-                      />
-                    </div>
-                    <div class="card-text px-4 py-3">
-                      <h5>Marketing Strategies</h5>
-                      <p class="text-black-50 fs-14">
-                        <span
-                          class="border-end border-1 pe-2 me-2 text-black-50"
-                          >Marketing</span
-                        >Semester 3
-                      </p>
-                    </div>
-                    <div class="card-button mt-4 text-center px-4 py-2">
-                      <button
-                        class="theme-btn fs-14 rounded-pill w-100 fw-bold py-2 border-0"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                      >
-                        View
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
       <!-- Notes Section Ends -->
@@ -423,24 +337,99 @@
     <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js"></script>
+
     <script>
-      $(document).ready(function () {
-        $(".owl-carousel").owlCarousel({
-          loop: true,
-          margin: 10,
-          nav: false,
-          autoplay: true,
-          dots: false,
-          autoplayTimeout: 4000,
-          autoplaySpeed: 1200,
-          autoplayHoverPause: true,
-          responsive: {
-            0: { items: 1 },
-            600: { items: 2 },
-            1000: { items: 3 },
-          },
+      fetch(`${API_BASE_URL}/notes/get-stream-wise-notes`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            let notes_container = document.querySelector(".notes-container");
+            if (!notes_container) {
+              console.error("'.notes-container' not found");
+              return;
+            }
+
+            notes_container.innerHTML = "";
+
+            data.data.forEach((stream_data) => {
+              let notesHTML = "";
+              stream_data?.notes?.forEach((note) => {
+                notesHTML += `
+                  <div class="px-lg-3 px-md-2 px-3 h-100">
+                    <div class="card rounded-4 overflow-hidden border-0 shadow-sm h-100">
+                      <div class="card-img w-100 rounded-3">
+                        <img src="${
+                          note.thumbnail
+                        }" alt="card-image" class="img-fluid" />
+                      </div>
+                      <div class="card-text px-4 py-3">
+                        <h5 class="text-capitalize">${note.title}${
+                  note.is_verified
+                    ? `<button type="button" data-bs-custom-class="custom-tooltip" class="btn p-0 border-0 bg-transparent ms-2 pe-2 text-success" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Verified"><i class="fa-solid fa-circle-check"></i></button>`
+                    : ""
+                }</h5>
+                        <p class="text-black-50 fs-14">
+                          <span class="border-end border-1 pe-2 me-2 text-black-50">${
+                            note.course.name
+                          }</span>
+                          Semester 1
+                        </p>
+                      </div>
+                      <div class="card-button mt-4 text-center px-4 py-2">
+                        <button class="theme-btn fs-14 rounded-pill w-100 fw-bold py-2 border-0"
+                          onclick="buildModal('${note.title}','${
+                  note.file_url
+                }',true)"
+                          data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          View
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                `;
+              });
+
+              notes_container.innerHTML += `
+                <div class="row">
+                  <div class="col-12">
+                    <h3 class="fw-bold my-4 ps-2">${stream_data.stream}</h3>
+                    <div class="owl-carousel owl-theme">
+                      ${notesHTML}
+                    </div>
+                  </div>
+                </div>
+              `;
+            });
+
+            $(".owl-carousel")
+              .on("initialized.owl.carousel", function (event) {
+                console.log("Owl carousel initialized");
+                reinitializeTooltips();
+              })
+              .owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                autoplay: true,
+                dots: false,
+                autoplayTimeout: 4000,
+                autoplaySpeed: 1200,
+                autoplayHoverPause: true,
+                responsive: {
+                  0: { items: 1 },
+                  600: { items: 2 },
+                  1000: { items: 3 },
+                },
+              });
+          } else {
+            console.warn("Data fetch unsuccessful:", data);
+          }
         });
-      });
     </script>
   </body>
 </html>
