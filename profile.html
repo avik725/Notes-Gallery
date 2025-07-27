@@ -39,9 +39,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Bootstrap select css  -->
+    <link rel="stylesheet" href="assets/css/bootstrap-select.css" />
   </head>
   <body>
-    <main id="contact-page">
+    <main id="profile-page">
       <!-- Header Section Starts -->
       <section id="header-section" class="px-4 shadow-sm">
         <nav class="navbar navbar-expand-lg">
@@ -104,18 +107,227 @@
         </nav>
       </section>
       <!-- Header Section Ends -->
-     <!-- Footer Section Starts -->
+
+      <!-- profile section starts -->
+      <section id="profile-section" class="pt-5 pb-5">
+        <div class="container px-4">
+          <!-- Section Header -->
+          <div class="section-title mb-4 text-center">
+            <h2 class="fw-bold fs-32">My Profile</h2>
+            <p class="form-control-text-color fs-14">
+              Manage your account information, update preferences, and
+              personalize your experience.
+            </p>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="profile-card p-4 bg-white rounded-4">
+                <form action="">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="d-flex justify-content-center">
+                        <div class="d-flex shadow-sm rounded-4 px-4 py-3 mb-4">
+                          <div class="row">
+                            <div
+                              class="col-md-4 text-center align-content-center"
+                            >
+                              <img
+                                src="assets/images/user_default_logo.png"
+                                alt="Profile Photo"
+                                class="rounded-circle mb-2 cursor-pointer"
+                                style="
+                                  width: 120px;
+                                  height: 120px;
+                                  object-fit: cover;
+                                "
+                                id="profilePreview"
+                                onclick="document.querySelector('#profile_pic').click()"
+                              />
+                              <input
+                                type="file"
+                                id="profile_pic"
+                                accept="image/*"
+                                class="form-control mt-2 w-auto mx-auto"
+                                hidden
+                              />
+                            </div>
+                            <div class="col-md-8 text-center align-content-center">
+                              <h4
+                                class="fw-bold fs-26 fs-sm-22 profile_card_name"
+                              >
+                                Avinash Kakade
+                              </h4>
+                              <p class="form-control-text-color fs-14">
+                                kakadeavinash9@gmail.com
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Full Name -->
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Full Name</label>
+                      <input
+                        id="full_name"
+                        name="full_name"
+                        type="text"
+                        class="form-control py-3 px-2 bg-light rounded-4"
+                        placeholder="Enter Full Name"
+                        oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                        required
+                      />
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Date of Birth</label>
+                      <input
+                        id="dob"
+                        name="dob"
+                        type="date"
+                        class="form-control py-3 px-2 bg-light rounded-4"
+                        required
+                      />
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Gender</label>
+                      <select
+                        id="gender"
+                        name="gender"
+                        class="form-control selectpicker bg-light rounded-4"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select Gender
+                        </option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Phone Number</label>
+                      <input
+                        id="mobile_no"
+                        name="mobile_no"
+                        type="text"
+                        class="form-control py-3 px-2 bg-light rounded-4"
+                        maxlength="10"
+                        placeholder="Enter Phone Number"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        required
+                      />
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Email Address</label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        class="form-control py-3 px-2 bg-light rounded-4"
+                        placeholder="Enter Email"
+                        required
+                      />
+                    </div>
+
+                    <!-- Address -->
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Address</label>
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        class="form-control py-3 px-2 bg-light rounded-4"
+                        placeholder="Enter Address"
+                      />
+                    </div>
+
+                    <!-- Stream -->
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Stream</label>
+                      <select
+                        id="prefered_stream"
+                        name="prefered_stream"
+                        class="form-control selectpicker bg-light rounded-4"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select Stream
+                        </option>
+                        <option>Science</option>
+                        <option>Commerce</option>
+                        <option>Arts</option>
+                        <option>Engineering</option>
+                      </select>
+                    </div>
+
+                    <!-- Language -->
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label">Language Preference</label>
+                      <select
+                        id="prefered_language"
+                        name="prefered_language"
+                        class="form-control selectpicker bg-light rounded-4"
+                      >
+                        <option value="" disabled selected>
+                          Select Language
+                        </option>
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="marathi">Marathi</option>
+                      </select>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="col-12 text-end mt-4">
+                      <button
+                        class="btn theme-btn rounded-pill px-4 py-2 fs-16 fw-bold"
+                      >
+                        Save Changes
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- profile section Ends -->
+
+      <!-- Footer Section Starts -->
       <section id="footer-section" class="pb-4 pt-md-5 pt-4 mt-lg-3">
         <div class="container">
           <div class="row">
             <div class="col-md-4 col-6 text-center">
-              <a href="about.html" class="text-decoration-none text-black-50 fs-sm-14">About Us</a>
+              <a
+                href="about.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >About Us</a
+              >
             </div>
             <div class="col-md-4 col-6 text-center">
-              <a href="contact.html" class="text-decoration-none text-black-50 fs-sm-14">Contact Us</a>
+              <a
+                href="contact.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >Contact Us</a
+              >
             </div>
             <div class="col-md-4 col-12 text-center">
-              <a href="privacy_policy.html" class="text-decoration-none text-black-50 fs-sm-14">Privacy Policy</a>
+              <a
+                href="privacy_policy.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >Privacy Policy</a
+              >
             </div>
             <div class="col-lg-12">
               <p class="text-black-50 text-center fs-sm-14 my-3">
@@ -128,12 +340,24 @@
       <!-- Footer Section Ends -->
     </main>
 
-
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap-select.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+      document.querySelector("#profile_pic").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("profilePreview").src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
   </body>
 </html>

@@ -225,13 +225,25 @@
         <div class="container">
           <div class="row">
             <div class="col-md-4 col-6 text-center">
-              <a href="about.html" class="text-decoration-none text-black-50 fs-sm-14">About Us</a>
+              <a
+                href="about.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >About Us</a
+              >
             </div>
             <div class="col-md-4 col-6 text-center">
-              <a href="contact.html" class="text-decoration-none text-black-50 fs-sm-14">Contact Us</a>
+              <a
+                href="contact.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >Contact Us</a
+              >
             </div>
             <div class="col-md-4 col-12 text-center">
-              <a href="privacy_policy.html" class="text-decoration-none text-black-50 fs-sm-14">Privacy Policy</a>
+              <a
+                href="privacy_policy.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >Privacy Policy</a
+              >
             </div>
             <div class="col-lg-12">
               <p class="text-black-50 text-center fs-sm-14 my-3">
@@ -285,11 +297,25 @@
               message.classList.add("text-success");
               message.innerText = "Username available !";
             } else {
+              fireSweetAlert({
+                success: data.success,
+                message: data.message,
+              });
               input.classList.add("bg-danger-subtle", "border-danger");
               btn.classList.add("disabled");
               message.classList.add("text-danger");
               message.innerText = "Username is not available";
             }
+          })
+          .catch((err) => {
+            fireSweetAlert({
+              success: false,
+              message:
+                err.message === "Failed to fetch"
+                  ? "Connection Error"
+                  : err.message,
+              timer: 2000,
+            });
           });
       }
 

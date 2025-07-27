@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     : `
                   <li class="nav-item dropdown cursor-pointer">
                     <span class="rounded-circle dropdown-toggle"  data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                       <img src="assets/images/demo_header_profile_pic.png" alt="icon">
+                       <img src="${data.data.profile_pic ? data.data.profile_pic :"assets/images/user_default_logo.png"}" alt="icon" class="rounded-circle" style="width: 40px;">
                     </span>
                     <ul class="dropdown-menu dropdown-menu-end mt-2 border-0 shadow-lg">
                         <li><a class="dropdown-item" href="profile.html">My Profile</a></li>

@@ -104,10 +104,10 @@
   font-weight: 900;
 }
 
-#upload-notes-page .bootstrap-select .dropdown-toggle {
+.bootstrap-select .dropdown-toggle {
   background-color: #f8f9fa;
 }
-#upload-notes-page .bootstrap-select .dropdown-toggle:hover {
+.bootstrap-select .dropdown-toggle:hover {
   background-color: #f8f9fa !important;
   border-color: #d9dde8;
 }
@@ -335,21 +335,27 @@
     box-shadow: none;
   }
 }
-@media screen and (max-height: 1360px) and (min-height: 770px) {
+@media screen and (max-width: 1360px) and (min-width: 770px) {
   #upload-notes-page #pdfContainer {
     height: 88vh !important;
   }
 }
-@media screen and (max-height: 770px) {
+@media screen and (max-width: 770px) {
   #upload-notes-page #pdfContainer {
     height: 50vh !important;
   }
 }
 
-@media screen and (max-height: 770px) {
+@media screen and (max-width: 770px) {
   #notes-library-page .filters-col {
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14);
     padding: 8px 12px;
     border-radius: 12px;
+  }
+}
+
+@media screen and (min-width: 770px) {
+  #profile-page .profile-card {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14);
   }
 }/*# sourceMappingURL=style.css.map */
