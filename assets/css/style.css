@@ -287,9 +287,14 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-@media screen and (max-width: 991px) and (min-width: 768px) {
+@media screen and (max-width: 991px) and (min-width: 770px) {
   #home-page #hero-section {
     height: 70vh;
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 480px) {
+  #home-page #hero-section {
+    height: 55vh;
   }
 }
 @media screen and (max-width: 480px) {
@@ -318,5 +323,18 @@
   #login-page #register-section .card,
   #login-page #login-section .card {
     box-shadow: none;
+  }
+}
+@media screen and (max-height: 770px) {
+  #upload-notes-page #pdfContainer {
+    height: 50vh !important;
+  }
+}
+
+@media screen and (max-height: 770px) {
+  #notes-library-page .filters-col {
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14);
+    padding: 8px 12px;
+    border-radius: 12px;
   }
 }/*# sourceMappingURL=style.css.map */

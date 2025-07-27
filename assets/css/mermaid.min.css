@@ -36,11 +36,11 @@
 .gridjs-footer {
   background-color: #fff;
   border-bottom-width: 1px;
-  border-color: #D1D6E3;
+  border-color: #d1d6e3;
   border-radius: 0 0 12px 12px;
-  border-bottom: 1px solid #D1D6E3;
-  border-left: 1px solid #D1D6E3;
-  border-right: 1px solid #D1D6E3;
+  border-bottom: 1px solid #d1d6e3;
+  border-left: 1px solid #d1d6e3;
+  border-right: 1px solid #d1d6e3;
   /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.26); */
   display: block;
   padding: 12px 24px;
@@ -71,6 +71,13 @@ input.gridjs-input:focus {
 .gridjs-pagination {
   color: #3d4044;
 }
+
+@media screen and (max-width: 480px) {
+  .gridjs-pagination .gridjs-pages {
+    margin-top: 15px;
+  }
+}
+
 .gridjs-pagination:after {
   clear: both;
   content: "";
@@ -85,7 +92,7 @@ input.gridjs-input:focus {
 }
 .gridjs-pagination .gridjs-pages button {
   background-color: #fff;
-  border: 1px solid #D1D6E3;
+  border: 1px solid #d1d6e3;
   border-right: none;
   outline: none;
   padding: 5px 14px;
@@ -94,7 +101,7 @@ input.gridjs-input:focus {
   user-select: none;
 }
 .gridjs-pagination .gridjs-pages button:focus {
-  border-right: 1px solid #D1D6E3;
+  border-right: 1px solid #d1d6e3;
   box-shadow: 0 0 0 2px rgba(149, 189, 243, 0.5);
   margin-right: -1px;
   position: relative;
@@ -122,7 +129,7 @@ input.gridjs-input:focus {
 }
 .gridjs-pagination .gridjs-pages button:last-child {
   border-bottom-right-radius: 6px;
-  border-right: 1px solid #D1D6E3;
+  border-right: 1px solid #d1d6e3;
   border-top-right-radius: 6px;
 }
 .gridjs-pagination .gridjs-pages button:first-child {
@@ -182,7 +189,7 @@ td.gridjs-td {
 }
 td.gridjs-td {
   /* border-top: 1px solid #D1D6E3; */
-  border-bottom: 1px solid #E5E8EB;
+  border-bottom: 1px solid #e5e8eb;
   box-sizing: content-box;
   padding: 20px 24px;
 }
@@ -197,7 +204,7 @@ td.gridjs-message {
 }
 th.gridjs-th {
   background-color: #fff;
-  border-bottom: 1px solid #D1D6E3;
+  border-bottom: 1px solid #d1d6e3;
   border-top: none;
   box-sizing: border-box;
   color: #000;
@@ -259,9 +266,9 @@ th.gridjs-th:last-child {
 .gridjs-wrapper {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border-color: #D1D6E3;
+  border-color: #d1d6e3;
   border-radius: 12px 12px 0 0;
-  border: 1px solid #D1D6E3;
+  border: 1px solid #d1d6e3;
   /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.26); */
   display: block;
   overflow: auto;

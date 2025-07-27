@@ -81,11 +81,11 @@
   color: #57618f !important;
 }
 
-.text-justify{
+.text-justify {
   text-align: justify;
 }
 
-.light-black{
+.light-black {
   color: #121417;
 }
 .bootstrap-select {
@@ -160,14 +160,13 @@ $font-sizes: (14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 48);
   }
 }
 
-
 .modal-dialog-scrollable .modal-content {
-    height: 75%;
+  height: 75%;
 }
 
 // Verified bagde
 
-.verified-badge{
+.verified-badge {
   position: absolute;
   top: -5%;
   right: -15%;
@@ -176,7 +175,7 @@ $font-sizes: (14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 48);
   rotate: 45deg;
   padding: 8px 30px 0;
   font-size: 14px;
-  i{
+  i {
     rotate: -45deg;
   }
 }
@@ -186,8 +185,8 @@ $font-sizes: (14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 48);
   --bs-tooltip-bg: #f4f4f4 !important;
   --bs-tooltip-color: #111 !important;
   border-radius: 5px;
- box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.44);
- font-size: 12px !important;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.44);
+  font-size: 12px !important;
 }
 
 // Header Section Starts
@@ -236,8 +235,11 @@ $font-sizes: (14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 48);
       position: center;
     }
 
-    @media screen and (max-width: 991px) and (min-width: 768px) {
+    @media screen and (max-width: 991px) and (min-width: 770px) {
       height: 70vh;
+    }
+    @media screen and (max-width: 768px) and (min-width: 480px) {
+      height: 55vh;
     }
 
     @media screen and (max-width: 480px) {
@@ -292,3 +294,30 @@ $font-sizes: (14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 48);
 }
 
 // Registration Page and Login Page Ends
+
+// Upload Notes Page Starts
+
+#upload-notes-page {
+  @media screen and (max-height: 770px) {
+    #pdfContainer {
+      height: 50vh !important;
+    }
+  }
+}
+
+// Upload Notes Page Ends
+
+//Notes Library Page Starts
+
+#notes-library-page {
+  @media screen and (max-height: 770px) {
+    .filters-col {
+      // border: 1px solid #e1e1e1;
+      box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14);
+      padding: 8px 12px;
+      border-radius: 12px;
+    }
+  }
+}
+
+//Notes Library Page Starts

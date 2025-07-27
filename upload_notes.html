@@ -120,58 +120,71 @@
                 <h2 class="fw-bold fs-32 text-center mb-4 pb-2">
                   Upload Notes
                 </h2>
-                <div class="mb-3">
-                  <label for="title" class="form-label">Note Title</label>
-                  <input
-                    type="text"
-                    class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
-                    id="title"
-                    name="title"
-                    placeholder="Enter note title"
-                    required
-                  />
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Note Title</label>
+                      <input
+                        type="text"
+                        class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                        id="title"
+                        name="title"
+                        placeholder="Enter note title"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="mb-3">
+                      <label for="stream" class="form-label">Stream</label>
+                      <select
+                        name="stream"
+                        id="stream"
+                        class="form-control selectpicker bg-light rounded-4 fs-sm-14"
+                        data-live-search="true"
+                      ></select>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-6">
+                    <div class="mb-3">
+                      <label for="course" class="form-label">Course</label>
+                      <select
+                        name="course"
+                        id="course"
+                        class="form-control selectpicker bg-light rounded-4 fs-sm-14"
+                        data-live-search="true"
+                      ></select>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-6">
+                    <div class="mb-3">
+                      <label for="semester" class="form-label"
+                        >Semester / Year</label
+                      >
+                      <select
+                        name="semester"
+                        id="semester"
+                        class="form-control selectpicker bg-light rounded-4 fs-sm-14"
+                        data-live-search="true"
+                      ></select>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="mb-4 pb-2">
+                      <label for="description" class="form-label"
+                        >Description</label
+                      >
+                      <textarea
+                        name="description"
+                        id="description"
+                        class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                        placeholder="Enter description"
+                        style="height: 150px; resize: none"
+                      ></textarea>
+                    </div>
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <label for="stream" class="form-label">Stream</label>
-                  <select
-                    name="stream"
-                    id="stream"
-                    class="form-control selectpicker bg-light rounded-4 fs-sm-14"
-                    data-live-search="true"
-                  ></select>
-                </div>
-                <div class="mb-3">
-                  <label for="course" class="form-label">Course</label>
-                  <select
-                    name="course"
-                    id="course"
-                    class="form-control selectpicker bg-light rounded-4 fs-sm-14"
-                    data-live-search="true"
-                  ></select>
-                </div>
-                <div class="mb-3">
-                  <label for="semester" class="form-label"
-                    >Semester / Year</label
-                  >
-                  <select
-                    name="semester"
-                    id="semester"
-                    class="form-control selectpicker bg-light rounded-4 fs-sm-14"
-                    data-live-search="true"
-                  ></select>
-                </div>
-                <div class="mb-4 pb-2">
-                  <label for="description" class="form-label"
-                    >Description</label
-                  >
-                  <textarea
-                    name="description"
-                    id="description"
-                    class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
-                    placeholder="Enter description"
-                    style="height: 150px; resize: none"
-                  ></textarea>
-                </div>
+                <div class="col-lg-12">
                 <div class="mb-5">
                   <div class="row">
                     <div class="col-md-6">
@@ -202,7 +215,7 @@
                       <!-- <label for="notes_file" class="form-label">Notes File</label> -->
                       <div
                         id="notes-drop-zone"
-                        class="drop-zone h-100 w-100 border-2 border-dashed p-4 rounded-4 text-center"
+                        class="drop-zone h-100 mt-3 mt-md-0 w-100 border-2 border-dashed p-4 rounded-4 text-center"
                       >
                         <h5 class="fw-bold text-center mb-4">
                           Drag and drop files here, or
@@ -226,6 +239,7 @@
                     </div>
                   </div>
                 </div>
+                </div>
                 <div class="px-5">
                   <button
                     type="submit"
@@ -239,7 +253,7 @@
             <div class="col-lg-7">
               <div
                 id="pdfContainer"
-                class="h-100 w-100 bg-light rounded-4 p-4 text-center align-content-center"
+                class="h-100 w-100 bg-light mt-4 mt-lg-0 rounded-4 p-4 text-center align-content-center"
               >
                 <h3 class="fw-bold form-control-text-color">
                   Select Notes File
@@ -259,13 +273,25 @@
         <div class="container">
           <div class="row">
             <div class="col-md-4 col-6 text-center">
-              <a href="about.html" class="text-decoration-none text-black-50 fs-sm-14">About Us</a>
+              <a
+                href="about.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >About Us</a
+              >
             </div>
             <div class="col-md-4 col-6 text-center">
-              <a href="contact.html" class="text-decoration-none text-black-50 fs-sm-14">Contact Us</a>
+              <a
+                href="contact.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >Contact Us</a
+              >
             </div>
             <div class="col-md-4 col-12 text-center">
-              <a href="privacy_policy.html" class="text-decoration-none text-black-50 fs-sm-14">Privacy Policy</a>
+              <a
+                href="privacy_policy.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >Privacy Policy</a
+              >
             </div>
             <div class="col-lg-12">
               <p class="text-black-50 text-center fs-sm-14 my-3">
