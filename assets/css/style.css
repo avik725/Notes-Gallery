@@ -156,6 +156,10 @@
   font-size: 30px !important;
 }
 
+.fs-32 {
+  font-size: 32px !important;
+}
+
 .fs-48 {
   font-size: 48px !important;
 }
@@ -191,6 +195,9 @@
   .fs-md-30 {
     font-size: 30px !important;
   }
+  .fs-md-32 {
+    font-size: 32px !important;
+  }
   .fs-md-48 {
     font-size: 48px !important;
   }
@@ -225,6 +232,9 @@
   }
   .fs-sm-30 {
     font-size: 30px !important;
+  }
+  .fs-sm-32 {
+    font-size: 32px !important;
   }
   .fs-sm-48 {
     font-size: 48px !important;

@@ -46,7 +46,7 @@
       <section id="header-section" class="px-4 shadow-sm">
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
               <img src="assets/images/logo_icon.png" alt="icon" />
               <h5 class="mb-0 ms-2">Notes Gallery</h5>
             </a>
@@ -104,18 +104,116 @@
         </nav>
       </section>
       <!-- Header Section Ends -->
+
+      <!-- Contact Section Starts -->
+      <section id="contact-section" class="pt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="section-title mb-5">
+                <h2 class="fw-bold mt-5 mt-lg-0 fs-32">Contact Us</h2>
+                <p class="form-control-text-color fs-14">
+                  We're here to help! Reach out to us with any questions,
+                  feedback, or concerns. We'll get back to you as soon as
+                  possible.
+                </p>
+              </div>
+              <form action="#">
+                <div class="mb-3">
+                  <label for="full_name" class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                    id="full_name"
+                    oninput="this.value = this.value.replace(/[^a-zA-Z/s]/g, '')"
+                    name="full_name"
+                    placeholder="Enter Your Full Name"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                    id="email"
+                    name="email"
+                    placeholder="Enter Your Email"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="mobile_number" class="form-label"
+                    >Mobile No.</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                    id="mobile_number"
+                    name="mobile_number"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    placeholder="Enter Your Mobile No."
+                    required
+                  />
+                </div>
+                <div class="mb-4 pb-2">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    class="form-control py-md-3 py-2 rounded-4 bg-light fs-sm-14"
+                    placeholder="Enter Your Message"
+                    style="height: 150px; resize: none"
+                  ></textarea>
+                </div>
+                <div class="">
+                  <button
+                    type="submit"
+                    class="btn submitBtn border-0 fs-18 theme-btn w-100 rounded-pill fw-bold py-2"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+              <div class="img-container">
+                <img
+                  src="assets/images/contact/support.png"
+                  alt="Image"
+                  class="img-fluid border border-1 rounded-4"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section Ends -->
+
       <!-- Footer Section Starts -->
       <section id="footer-section" class="pb-4 pt-md-5 pt-4 mt-lg-3">
         <div class="container">
           <div class="row">
             <div class="col-md-4 col-6 text-center">
-              <a href="about.html" class="text-decoration-none text-black-50 fs-sm-14">About Us</a>
+              <a
+                href="about.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >About Us</a
+              >
             </div>
             <div class="col-md-4 col-6 text-center">
-              <a href="contact.html" class="text-decoration-none text-black-50 fs-sm-14">Contact Us</a>
+              <a
+                href="contact.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >Contact Us</a
+              >
             </div>
             <div class="col-md-4 col-12 text-center">
-              <a href="privacy_policy.html" class="text-decoration-none text-black-50 fs-sm-14">Privacy Policy</a>
+              <a
+                href="privacy_policy.html"
+                class="text-decoration-none text-black-50 fs-sm-14"
+                >Privacy Policy</a
+              >
             </div>
             <div class="col-lg-12">
               <p class="text-black-50 text-center fs-sm-14 my-3">
@@ -126,9 +224,7 @@
         </div>
       </section>
       <!-- Footer Section Ends -->
-       
     </main>
-
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery-3.7.1.min.js"></script>
