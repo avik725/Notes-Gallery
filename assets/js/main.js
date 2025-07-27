@@ -42,6 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   window.constructLoggedInHeader = function (data) {
+    let isTableOrMobile =
+      window.innerWidth < 770 ||
+      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    window.addEventListener("resize", () => {
+      isTableOrMobile = window.innerWidth < 770;
+    });
     //replace header tabs if loggin successfull
     document.getElementById("navbarNav").innerHTML = `
         <ul class="navbar-nav pt-2 ps-3 ps-md-4">
@@ -87,7 +93,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     >My Uploads</a
                   >
                 </li>
-                <li class="nav-item dropdown cursor-pointer">
+                ${
+                  isTableOrMobile
+                    ? `
+                  <li class="nav-item">
+                    <a class="nav-link me-3 text-black" href="profile.html"
+                      >My Profile</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link me-3 text-black" href="#" id="logoutBtn">Log Out</a>
+                  </li>
+                  `
+                    : `
+                  <li class="nav-item dropdown cursor-pointer">
                     <span class="rounded-circle dropdown-toggle"  data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                        <img src="assets/images/demo_header_profile_pic.png" alt="icon">
                     </span>
@@ -95,7 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
                         <li><a class="dropdown-item" href="#" id="logoutBtn">Log Out</a></li>
                     </ul>
-                </li>
+                  </li>
+                  `
+                }
               </ul>
         `;
 
@@ -143,37 +164,61 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.buildModal = function (title, url, featured = false) {
-    let modalTitle = document.querySelector(".modal-title");
-    let modalBody = document.querySelector(".modal-body");
-    let modalContent = document.querySelector(".modal-content");
-    let modalFooter = modalContent.querySelector(".modal-footer");
-
-    modalTitle.innerHTML = "";
-    modalBody.innerHTML = "";
+    const modalTitle = document.querySelector(".modal-title");
+    const modalBody = document.querySelector(".modal-body");
+    const modalContent = document.querySelector(".modal-content");
+    const modalFooter = modalContent.querySelector(".modal-footer");
 
     modalTitle.innerHTML = `<span class="text-capitalize">${title}</span>`;
+    modalBody.innerHTML = `<div id="modalPdfContainer" style="width: 100%; overflow-y: auto;"></div>`;
 
-    modalBody.innerHTML = `<iframe
-                      id="pdfPreview"
-                      class="pdf-preview h-100 w-100"
-                      type="application/pdf"
-                      src="${url}#toolbar=0&navpanes=0&scrollbar=1"
-                    ></iframe>`;
-
-    if (modalFooter) {
-      modalFooter.remove();
-    }
+    if (modalFooter) modalFooter.remove();
 
     if (featured) {
-      let footerHTML = document.createElement("div");
+      const footerHTML = document.createElement("div");
       footerHTML.className = "modal-footer";
       footerHTML.innerHTML = `
-          <button type="button" class="btn theme-btn fw-bold rounded-pill py-2 px-3" onclick="downloadNote('${title}','${url}')">
-            Download
-          </button>
-        `;
+      <button type="button" class="btn theme-btn fw-bold rounded-pill py-2 px-3" onclick="downloadNote('${title}','${url}')">
+        Download
+      </button>
+    `;
       modalContent.appendChild(footerHTML);
     }
+
+    setTimeout(() => {
+      const container = document.getElementById("modalPdfContainer");
+      const containerWidth = container.clientWidth || 500;
+
+      pdfjsLib
+        .getDocument(url)
+        .promise.then((pdf) => {
+          for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+            pdf.getPage(pageNum).then((page) => {
+              const unscaledViewport = page.getViewport({ scale: 1 });
+              const scale = containerWidth / unscaledViewport.width;
+              const viewport = page.getViewport({ scale });
+
+              const canvas = document.createElement("canvas");
+              const context = canvas.getContext("2d");
+              canvas.width = viewport.width;
+              canvas.height = viewport.height;
+              canvas.style.width = "100%";
+              canvas.style.marginBottom = "20px";
+
+              const renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+              };
+
+              page.render(renderContext);
+              container.appendChild(canvas);
+            });
+          }
+        })
+        .catch((error) => {
+          container.innerHTML = `<p class="text-danger">Failed to load PDF: ${error.message}</p>`;
+        });
+    }, 800);
   };
 
   window.downloadNote = function (title, fileUrl) {

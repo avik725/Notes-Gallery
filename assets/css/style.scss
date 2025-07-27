@@ -298,6 +298,11 @@ $font-sizes: (14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 48);
 // Upload Notes Page Starts
 
 #upload-notes-page {
+  @media screen and (max-height: 1360px) and (min-height: 770px) {
+    #pdfContainer {
+      height: 88vh !important;
+    }
+  }
   @media screen and (max-height: 770px) {
     #pdfContainer {
       height: 50vh !important;

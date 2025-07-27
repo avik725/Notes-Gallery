@@ -325,6 +325,11 @@
     box-shadow: none;
   }
 }
+@media screen and (max-height: 1360px) and (min-height: 770px) {
+  #upload-notes-page #pdfContainer {
+    height: 88vh !important;
+  }
+}
 @media screen and (max-height: 770px) {
   #upload-notes-page #pdfContainer {
     height: 50vh !important;

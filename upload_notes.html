@@ -185,60 +185,62 @@
                   </div>
                 </div>
                 <div class="col-lg-12">
-                <div class="mb-5">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <!-- <label for="thumbnail" class="form-label">Thumbnail</label> -->
-                      <div
-                        id="thumbnail-drop-zone"
-                        class="drop_zone h-100 w-100 border-2 border-dashed p-4 rounded-4 text-center"
-                      >
-                        <h5 class="fw-bold text-center mb-4">
-                          Drag and drop files here, or
-                        </h5>
-                        <a
-                          class="btn theme-btn rounded-pill fw-bold px-3 py-2"
-                          onclick="document.querySelector('#thumbnail').click()"
-                          >Select Thumbail</a
+                  <div class="mb-5">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <!-- <label for="thumbnail" class="form-label">Thumbnail</label> -->
+                        <div
+                          id="thumbnail-drop-zone"
+                          class="drop_zone h-100 w-100 border-2 border-dashed p-4 rounded-4 text-center"
                         >
-                        <p id="selected-img" class="mt-3">No Image Selected</p>
-                        <input
-                          type="file"
-                          name="thumbnail"
-                          id="thumbnail"
-                          accept="image/*"
-                          hidden
-                        />
+                          <h5 class="fw-bold text-center mb-4">
+                            Drag and drop files here, or
+                          </h5>
+                          <a
+                            class="btn theme-btn rounded-pill fw-bold px-3 py-2"
+                            onclick="document.querySelector('#thumbnail').click()"
+                            >Select Thumbail</a
+                          >
+                          <p id="selected-img" class="mt-3">
+                            No Image Selected
+                          </p>
+                          <input
+                            type="file"
+                            name="thumbnail"
+                            id="thumbnail"
+                            accept="image/*"
+                            hidden
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-md-6">
-                      <!-- <label for="notes_file" class="form-label">Notes File</label> -->
-                      <div
-                        id="notes-drop-zone"
-                        class="drop-zone h-100 mt-3 mt-md-0 w-100 border-2 border-dashed p-4 rounded-4 text-center"
-                      >
-                        <h5 class="fw-bold text-center mb-4">
-                          Drag and drop files here, or
-                        </h5>
-                        <a
-                          class="btn theme-btn rounded-pill fw-bold px-3 py-2"
-                          onclick="document.querySelector('#notes_file').click()"
-                          >Select Notes File</a
+                      <div class="col-md-6">
+                        <!-- <label for="notes_file" class="form-label">Notes File</label> -->
+                        <div
+                          id="notes-drop-zone"
+                          class="drop-zone h-100 mt-3 mt-md-0 w-100 border-2 border-dashed p-4 rounded-4 text-center"
                         >
-                        <p id="selected-notes_file" class="mt-3">
-                          File Not Selected
-                        </p>
-                        <input
-                          type="file"
-                          name="notes_file"
-                          id="notes_file"
-                          accept="application/pdf"
-                          hidden
-                        />
+                          <h5 class="fw-bold text-center mb-4">
+                            Drag and drop files here, or
+                          </h5>
+                          <a
+                            class="btn theme-btn rounded-pill fw-bold px-3 py-2"
+                            onclick="document.querySelector('#notes_file').click()"
+                            >Select Notes File</a
+                          >
+                          <p id="selected-notes_file" class="mt-3">
+                            File Not Selected
+                          </p>
+                          <input
+                            type="file"
+                            name="notes_file"
+                            id="notes_file"
+                            accept="application/pdf"
+                            hidden
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
                 </div>
                 <div class="px-5">
                   <button
@@ -250,17 +252,19 @@
                 </div>
               </form>
             </div>
-            <div class="col-lg-7">
-              <div
-                id="pdfContainer"
-                class="h-100 w-100 bg-light mt-4 mt-lg-0 rounded-4 p-4 text-center align-content-center"
-              >
-                <h3 class="fw-bold form-control-text-color">
-                  Select Notes File
-                </h3>
-                <p class="form-control-text-color">
-                  Pdf File will be Previewed here
-                </p>
+            <div class="col-lg-7 bg-light rounded-4 p-4 mt-5 mt-lg-0">
+              <div class="h-100 w-100 overflow-scroll">
+                <div
+                  id="pdfContainer"
+                  class="h-100 w-100 text-center align-content-center"
+                >
+                  <h3 class="fw-bold form-control-text-color">
+                    Select Notes File
+                  </h3>
+                  <p class="form-control-text-color">
+                    Pdf File will be Previewed here
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -310,9 +314,15 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/gridjs.umd.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    </script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js"></script>
 
+    <!-- Drag and Drop script -->
     <script>
       document.querySelector("#thumbnail").addEventListener("input", (e) => {
         e.preventDefault();
@@ -391,25 +401,55 @@
       function dragOverHandler(ev) {
         ev.preventDefault();
       }
+    </script>
 
+    <!-- Pdf JS Script -->
+    <script>
+      const fileInput = document.getElementById("notes_file");
       const pdfContainer = document.getElementById("pdfContainer");
-      document
-        .querySelector("#notes_file")
-        .addEventListener("change", function (e) {
-          const file = e.target.files[0];
-          if (file && file.type === "application/pdf") {
-            const fileURL = URL.createObjectURL(file);
-            // Hiding browser PDF toolbar with #toolbar=0
-            pdfContainer.innerHTML = `<iframe
-                  id="pdfPreview"
-                  class="pdf-preview h-100 w-100"
-                  type="application/pdf"
-                  src="${fileURL}#toolbar=0&navpanes=0&scrollbar=1"
-                ></iframe>`;
-          } else {
-            alert("Please select a valid PDF file.");
-          }
-        });
+
+      fileInput.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (file && file.type === "application/pdf") {
+          const fileURL = URL.createObjectURL(file);
+          pdfContainer.innerHTML = ""; // clear previous
+
+          pdfjsLib
+            .getDocument(fileURL)
+            .promise.then((pdf) => {
+              for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                pdf.getPage(pageNum).then((page) => {
+                  const containerWidth = pdfContainer.clientWidth;
+
+                  const unscaledViewport = page.getViewport({ scale: 1 });
+                  const scale = containerWidth / unscaledViewport.width;
+                  const viewport = page.getViewport({ scale });
+
+                  const canvas = document.createElement("canvas");
+                  const context = canvas.getContext("2d");
+                  canvas.width = viewport.width;
+                  canvas.height = viewport.height;
+
+                  const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                  };
+
+                  page.render(renderContext);
+                  pdfContainer.appendChild(canvas);
+                });
+              }
+            })
+            .catch((err) => {
+              console.error("Failed to load PDF:", err);
+            });
+        } else {
+          fireSweetAlert({
+            success: false,
+            message: "Please select a valid PDF file.",
+          });
+        }
+      });
     </script>
 
     <!-- File Uploading Script -->

@@ -121,16 +121,16 @@
             </p>
           </div>
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-md-6">
               <div class="card rounded-4 border-secondary-subtle p-4">
                 <p class="">Total Uploads</p>
-                <h4 class="fw-bold fs-26 total_uploads">14</h4>
+                <h4 class="fw-bold fs-26 total_uploads">0</h4>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="card rounded-4 border-secondary-subtle p-4">
+            <div class="col-md-6">
+              <div class="card rounded-4 border-secondary-subtle p-4 mt-4 mt-md-0">
                 <p class="">Total Downloads</p>
-                <h4 class="fw-bold fs-26 total_downloads">230</h4>
+                <h4 class="fw-bold fs-26 total_downloads">0</h4>
               </div>
             </div>
           </div>
@@ -211,6 +211,11 @@
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/gridjs.umd.js"></script>
     <script src="assets/js/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    </script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js"></script>
 
@@ -234,13 +239,22 @@
                   : "th"
               } ${note.semester ? "semester" : "year"}`,
               gridjs.html(
-                `<a href="#" onclick="buildModal('${note.title}','${note.file_url}')" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                class="view-btn text-decoration-none form-control-text-color fw-semibold pe-2 m-0">
-                View
-                </a> |
-                <a href="#" onclick="downloadNote('${note.title}','${note.file_url}')" class="text-decoration-none form-control-text-color fw-semibold ps-2 m-0" >
-                  Download
-                </a>`
+               `<div>
+                  <div class="row">
+                    <div class="col-lg-auto p-0 ps-3 ps-lg-0 col-12 ">
+                      <a href="#" onclick="buildModal('${note.title}','${note.file_url}')" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                      class="view-btn text-decoration-none form-control-text-color fw-semibold pe-lg-2 m-0">
+                      View
+                      </a>
+                      <span class="d-none d-lg-inline-block">|</span>
+                    </div>
+                    <div class="col-lg-auto p-0 col-12">
+                      <a href="#" onclick="downloadNote('${note.title}','${note.file_url}')" class="text-decoration-none form-control-text-color fw-semibold ps-lg-3 m-0" >
+                        Download
+                      </a>
+                    </div>
+                  </div>
+                </div>`
               ),
             ]),
           handle: async (res) => {
