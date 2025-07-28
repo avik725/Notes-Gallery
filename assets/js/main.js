@@ -25,10 +25,82 @@ document.addEventListener("DOMContentLoaded", () => {
             ".get-involved"
           ).innerHTML += `<a href="upload_notes.html" class="btn border-0 theme-btn rounded-pill fw-bold px-3 py-2">Upload Notes Now !</a>`;
         }
+
+        //Fill Profile Page Values
+        if (window.location.pathname.includes("profile")) {
+          const profileUpdateForm = document.querySelector("form#profileForm");
+          const stream_select = document.querySelector(
+            "select[name='prefered_stream']"
+          );
+
+          document.querySelector(".profile_card_name").innerText = data?.data?.fullname;
+          document.querySelector(".profile_card_email").innerText = data?.data?.email;
+
+          for (let key in data.data) {
+            let element =
+              profileUpdateForm.querySelector(`input[name='${key}']`) != null
+                ? profileUpdateForm.querySelector(`input[name='${key}']`)
+                : profileUpdateForm.querySelector(`select[name='${key}']`);
+
+            if (element) {
+              if (element.type === "file") {
+                if (data.data[key].trim() != "" && data.data[key] != null) {
+                  document.querySelector("#profilePreview").src =
+                    data.data[key];
+                }
+              } else if (element.type === "date") {
+                element.value = data.data[key]?.split("T")[0] || "";
+              } else {
+                // Destroy and Render selectpicker again only for that field
+                if (element.classList.contains("selectpicker")) {
+                  $(element).selectpicker("destroy");
+                  element.value = data.data[key];
+                  $(element).selectpicker("render");
+                } else {
+                  element.value = data.data[key];
+                }
+              }
+            }
+          }
+
+          fetch(`${API_BASE_URL}/notes/get-streams`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((streamData) => {
+              if (streamData.success) {
+                let streams = streamData.data;
+
+                // Reset stream select
+                $(stream_select).selectpicker("destroy");
+                $(stream_select).empty();
+                $(stream_select).val();
+                $(stream_select).append(
+                  '<option value="">Select Stream</option>'
+                );
+
+                streams.forEach((stream) => {
+                  let option = document.createElement("option");
+                  option.value = stream._id;
+                  option.textContent = stream.name;
+                  option.selected = stream._id === data.data.prefered_stream;
+                  stream_select.appendChild(option);
+                });
+
+                // Re-render stream dropdown
+                $(stream_select).selectpicker("render");
+              }
+            });
+        }
+
       } else {
         if (
           window.location.pathname.includes("myUploads") ||
-          window.location.pathname.includes("upload_notes")
+          window.location.pathname.includes("upload_notes") ||
+          window.location.pathname.includes("profile")
         ) {
           window.location.href = "/index.html";
         }
@@ -108,7 +180,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     : `
                   <li class="nav-item dropdown cursor-pointer">
                     <span class="rounded-circle dropdown-toggle"  data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                       <img src="${data.data.profile_pic ? data.data.profile_pic :"assets/images/user_default_logo.png"}" alt="icon" class="rounded-circle" style="width: 40px;">
+                       <img src="${
+                         data.data.profile_pic.trim() !== "" &&
+                         data.data.profile_pic !== null
+                           ? data.data.profile_pic
+                           : "assets/images/user_default_logo.png"
+                       }" alt="icon" class="rounded-circle" style="width: 40px;">
                     </span>
                     <ul class="dropdown-menu dropdown-menu-end mt-2 border-0 shadow-lg">
                         <li><a class="dropdown-item" href="profile.html">My Profile</a></li>

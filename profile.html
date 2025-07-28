@@ -123,7 +123,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-10">
               <div class="profile-card p-4 bg-white rounded-4">
-                <form action="">
+                <form action="" id="profileForm">
                   <div class="row">
                     <div class="col-12">
                       <div class="d-flex justify-content-center">
@@ -147,20 +147,24 @@
                               <input
                                 type="file"
                                 id="profile_pic"
+                                name="profile_pic"
                                 accept="image/*"
                                 class="form-control mt-2 w-auto mx-auto"
                                 hidden
                               />
                             </div>
-                            <div class="col-md-8 text-center align-content-center">
+                            <div
+                              class="col-md-8 ps-md-4 text-center text-md-start align-content-center"
+                            >
                               <h4
-                                class="fw-bold fs-26 fs-sm-22 profile_card_name"
+                                class="fw-bold fs-26 fs-sm-22 d-none d-md-block profile_card_name"
                               >
-                                Avinash Kakade
+                                Your Name
                               </h4>
-                              <p class="form-control-text-color fs-14">
-                                kakadeavinash9@gmail.com
+                              <p class="form-control-text-color d-none d-md-block profile_card_email fs-14">
+                                example@email.com
                               </p>
+                              <a class="btn d-md-none theme-btn rounded-4 fw-bold" onclick="document.querySelector('#profile_pic').click()">Change Avatar</a>
                             </div>
                           </div>
                         </div>
@@ -170,8 +174,8 @@
                     <div class="col-md-6 mb-3">
                       <label class="form-label">Full Name</label>
                       <input
-                        id="full_name"
-                        name="full_name"
+                        id="fullname"
+                        name="fullname"
                         type="text"
                         class="form-control py-3 px-2 bg-light rounded-4"
                         placeholder="Enter Full Name"
@@ -214,8 +218,8 @@
                     <div class="col-md-6 mb-3">
                       <label class="form-label">Phone Number</label>
                       <input
-                        id="mobile_no"
-                        name="mobile_no"
+                        id="mobile"
+                        name="mobile"
                         type="text"
                         class="form-control py-3 px-2 bg-light rounded-4"
                         maxlength="10"
@@ -259,13 +263,6 @@
                         class="form-control selectpicker bg-light rounded-4"
                         required
                       >
-                        <option value="" disabled selected>
-                          Select Stream
-                        </option>
-                        <option>Science</option>
-                        <option>Commerce</option>
-                        <option>Arts</option>
-                        <option>Engineering</option>
                       </select>
                     </div>
 
@@ -289,6 +286,7 @@
                     <!-- Save Button -->
                     <div class="col-12 text-end mt-4">
                       <button
+                        type="submit"
                         class="btn theme-btn rounded-pill px-4 py-2 fs-16 fw-bold"
                       >
                         Save Changes
@@ -358,6 +356,37 @@
           reader.readAsDataURL(file);
         }
       });
+    </script>
+
+    <script>
+      const form = document.querySelector("form#profileForm");
+      const stream_select = form.querySelector("#prefered_stream");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let formData = new FormData(form);
+        // for (let pair of formData.entries()) {
+        //   console.log(pair[0] + ", " + pair[1]);
+        // }
+        fetch(`${API_BASE_URL}/users/update-profile`, {
+          method: "POST",
+          credentials: "include",
+          body: formData,
+        })
+          .then(async (res) => {
+            return await res.json();
+          })
+          .then((data) => {
+            fireSweetAlert({
+              success: data.success,
+              message: data.message,
+            }).then(() => {
+              if (data.success) {
+                location.reload();
+              }
+            });
+          });
+      });
+
     </script>
   </body>
 </html>
