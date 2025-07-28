@@ -161,10 +161,16 @@
                               >
                                 Your Name
                               </h4>
-                              <p class="form-control-text-color d-none d-md-block profile_card_email fs-14">
+                              <p
+                                class="form-control-text-color d-none d-md-block profile_card_email fs-14"
+                              >
                                 example@email.com
                               </p>
-                              <a class="btn d-md-none theme-btn rounded-4 fw-bold" onclick="document.querySelector('#profile_pic').click()">Change Avatar</a>
+                              <a
+                                class="btn d-md-none theme-btn rounded-4 fw-bold"
+                                onclick="document.querySelector('#profile_pic').click()"
+                                >Change Avatar</a
+                              >
                             </div>
                           </div>
                         </div>
@@ -262,8 +268,7 @@
                         name="prefered_stream"
                         class="form-control selectpicker bg-light rounded-4"
                         required
-                      >
-                      </select>
+                      ></select>
                     </div>
 
                     <!-- Language -->
@@ -285,12 +290,16 @@
 
                     <!-- Save Button -->
                     <div class="col-12 text-end mt-4">
-                      <button
-                        type="submit"
-                        class="btn theme-btn rounded-pill px-4 py-2 fs-16 fw-bold"
-                      >
-                        Save Changes
-                      </button>
+                      <div class="row">
+                        <div class="col-lg-3 offset-lg-9">
+                          <button
+                            type="submit"
+                            class="btn w-100 submitBtn border-0 theme-btn rounded-pill px-4 py-2 fs-16 fw-bold"
+                          >
+                            Save Changes
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </form>
@@ -361,12 +370,17 @@
     <script>
       const form = document.querySelector("form#profileForm");
       const stream_select = form.querySelector("#prefered_stream");
+      const submitBtn = form.querySelector(".submitBtn");
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
+        submitBtn.innerHTML = `<span
+        class="spinner-border spinner-border-sm me-2"
+        role="status"
+        aria-hidden="true"
+        ></span>`;
+        submitBtn.disabled = true;
         let formData = new FormData(form);
-        // for (let pair of formData.entries()) {
-        //   console.log(pair[0] + ", " + pair[1]);
-        // }
         fetch(`${API_BASE_URL}/users/update-profile`, {
           method: "POST",
           credentials: "include",
@@ -376,6 +390,8 @@
             return await res.json();
           })
           .then((data) => {
+            submitBtn.innerHTML = "Save Changes";
+            submitBtn.disabled = false;
             fireSweetAlert({
               success: data.success,
               message: data.message,
@@ -386,7 +402,6 @@
             });
           });
       });
-
     </script>
   </body>
 </html>
